@@ -1,7 +1,7 @@
 class ChatsController < ApplicationController
   include Tubesock::Hijack
 
-  before_action :set_chat, only: [:show, :edit, :update, :destroy, :chat]
+  before_action :set_chat, only: [:show, :edit, :update, :destroy, :chat, :messages]
   # before_action :check_user_chat, only: [:show, :chat]
 
   def index
@@ -10,6 +10,14 @@ class ChatsController < ApplicationController
 
   def show
     render json: @chat
+  end
+
+  def messages
+    @messages = []
+    @chat.messages.each do |m|
+      @messages << {message: m, owner: m.owner}
+    end
+    render json: @messages
   end
 
   def chat
@@ -30,6 +38,8 @@ class ChatsController < ApplicationController
         # pub the message when we get one
         # note: this echoes through the sub above
         m = JSON.parse(m)
+        @chat.messages.create(content: m['message'], sent_id: current_user.id)
+
         m = {"username" => current_user.email, "message" => m['message']}.to_json
         Redis.new.publish "Chat_#{@chat.id}", m
       end

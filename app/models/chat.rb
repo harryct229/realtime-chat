@@ -6,4 +6,5 @@ class Chat < ActiveRecord::Base
   has_many :participations, dependent: :destroy
   has_many :users, through: :participations, source: :user
 
+  has_many :messages, dependent: :destroy
 end

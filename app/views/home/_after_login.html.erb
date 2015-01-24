@@ -22,7 +22,14 @@
       <div id="screenchat-view-container" ng-show="selectedScreenchat">
         <h2>{{selectedScreenchat.name}}</h2>
         <div sock-chat=""></div>
-        <pre id="output"></pre>
+        <div id="output">
+          <ul>
+            <li ng-repeat="chatmessage in chatmessages">
+              <div>{{chatmessage.owner.email}}: </div>
+              <p>{{chatmessage.message.content}}</p>
+            </li>
+          </ul>
+        </div>
         <form class="chat" id="">
           <input placeholder="hello world" autofocus>
         </form>
@@ -34,13 +41,18 @@
 
 <script type="text/javascript">
   $("body").on("submit", "form.chat", function(event) {
-    var $input;
-    event.preventDefault();
-    $input = $(this).find("input");
+    var $input
+    event.preventDefault()
+    $input = $(this).find("input")
     // console.log($input.val());
     window.socket.send(JSON.stringify({
       message: $input.val()
     }));
-    $input.val(null);
+    $input.val(null)
   });
+
+  $("#screenchat-list-container").on("click", "li", function() {
+    $("#screenchat-list-container li h3").removeClass('active')
+    $(this).find("h3").attr("class", "active")
+  })
 </script>

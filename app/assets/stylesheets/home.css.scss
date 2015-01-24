@@ -115,9 +115,10 @@
 }
 
 #screenchat-list-container {
+  overflow-y: scroll;
   background-color: #fff;
   position: absolute;
-  min-height: 700px;
+  height: 575px;
   width: 300px;
   top: 100px;
   left: 0;
@@ -142,7 +143,7 @@
       font-weight: normal;
     }
     &.active {
-      color: red;
+      color: $blue;
     }
   }
 }
@@ -155,7 +156,7 @@
   right: 0;
   bottom: 0;
   background-color: #fff;
-  min-height: 700px;
+  height: 625px;
   padding: 5px 25px;
 
   h2 {
