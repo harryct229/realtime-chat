@@ -2,7 +2,6 @@ class ChatsController < ApplicationController
   include Tubesock::Hijack
 
   before_action :set_chat, only: [:show, :edit, :update, :destroy, :chat, :messages]
-  # before_action :check_user_chat, only: [:show, :chat]
 
   def index
     render json: Chat.all
@@ -18,11 +17,11 @@ class ChatsController < ApplicationController
     respond_to do |format|
       if @chat.save
         current_user.join_in @chat
-        format.html { redirect_to @chat, notice: 'Todo was successfully created.' }
-        format.json { render json: @chat, status: :created, location: @chat }
+        format.html {redirect_to @chat}
+        format.json {render json: @chat, status: :created, location: @chat}
       else
-        format.html { render action: "new" }
-        format.json { render json: @chat.errors, status: :unprocessable_entity }
+        format.html {render action: "new" }
+        format.json {render json: @chat.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -43,7 +42,6 @@ class ChatsController < ApplicationController
         # and sub at the same time
         Redis.new.subscribe "Chat_#{@chat.id}" do |on|
           on.message do |channel, message|
-            # message = JSON.parse(message)
             tubesock.send_data message
           end
         end
@@ -70,10 +68,6 @@ class ChatsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_chat
       @chat = Chat.find(params[:id])
-    end
-
-    def check_user_chat
-      redirect_to root_path unless @chat.users.include?(current_user)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

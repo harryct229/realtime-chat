@@ -17,12 +17,14 @@
       <div id="screenchat-list-container" sockchat>
         <ul>
           <li ng-repeat="screenchat in screenchats" ng-click="showScreenchat(screenchat)">
-            <h3 ng-class="{active: $index == selectedRow}" clickchat="active">{{screenchat.name}}</h3>
+            <h3 ng-class="{active: screenchat == selectedScreenchat}" clickchat="active">
+              {{screenchat.name}}
+            </h3>
           </li>
         </ul>
       </div>
 
-      <div id="screenchat-view-container" ng-show="selectedScreenchat">
+      <div id="screenchat-view-container"`>
         <h2>{{selectedScreenchat.name}}</h2>
         <div id="output">
           <ul>
