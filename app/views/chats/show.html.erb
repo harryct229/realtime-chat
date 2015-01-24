@@ -11,7 +11,8 @@
   socket.onmessage = function(event){
     data = jQuery.parseJSON(event.data)
     if(event.data.length)
-      $("#output").append(data.username + ": " + data.message + "<br>")
+      var chat_line = $('<div class="chat_line">').append($('<div class="user_info">').text(data.username)).append($('<div class="chat_content">').text(data.message).emoticonize())
+      $("#output").append(chat_line)
   }
 
   $("body").on("submit", "form.chat", function(event) {
