@@ -11,7 +11,7 @@
         <span>Room</span>
         <div class="btn add_room">+</div>
       </div>
-      <div id="screenchat-list-container">
+      <div id="screenchat-list-container" sockchat>
         <ul>
           <li ng-repeat="screenchat in screenchats" ng-click="showScreenchat(screenchat)">
             <h3 ng-class="{active: $index == selectedRow}" clickchat="active">{{screenchat.name}}</
@@ -29,7 +29,7 @@
             </li>
           </ul>
         </div>
-        <form class="chat" id="">
+        <form class="chat" formchat>
           <input placeholder="hello world" autofocus>
         </form>
       </div>
@@ -37,16 +37,3 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-  $("body").on("submit", "form.chat", function(event) {
-    var $input
-    event.preventDefault()
-    $input = $(this).find("input")
-    // console.log($input.val());
-    window.socket.send(JSON.stringify({
-      message: $input.val()
-    }));
-    $input.val(null)
-  });
-</script>
