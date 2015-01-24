@@ -14,4 +14,12 @@ App.controller 'ScreenchatsCtrl', ['$scope', 'Screenchat', 'ChatMessage', ($scop
     $scope.selectedScreenchat = screenchat
     $scope.selectedRow = row
     $scope.chatmessages = ChatMessage.query(id: $scope.selectedScreenchat.id)
+
+  $scope.create = (screenchat) ->
+    event.preventDefault()
+    t = new Screenchat(screenchat)
+    t.$create (screenchat) ->
+      $scope.screenchats.push screenchat
+      $scope.screenchat.name = ""
+      $("form#new_room input").toggleClass("movein")
 ]

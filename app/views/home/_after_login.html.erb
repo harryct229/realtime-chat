@@ -9,12 +9,15 @@
     <div ng-controller="ScreenchatsCtrl">
       <div id="room-selection">
         <span>Room</span>
-        <div class="btn add_room">+</div>
+        <form id="new_room" ng-submit="create(screenchat)">
+          <input id="name-chat-input" type="text" placeholder="Chat name" ng-model="screenchat.name">
+        </form>
+        <div addroom="movein" class="btn add_room">+</div>
       </div>
       <div id="screenchat-list-container" sockchat>
         <ul>
           <li ng-repeat="screenchat in screenchats" ng-click="showScreenchat(screenchat)">
-            <h3 ng-class="{active: $index == selectedRow}" clickchat="active">{{screenchat.name}}</
+            <h3 ng-class="{active: $index == selectedRow}" clickchat="active">{{screenchat.name}}</h3>
           </li>
         </ul>
       </div>

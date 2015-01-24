@@ -12,6 +12,21 @@ class ChatsController < ApplicationController
     render json: @chat
   end
 
+  def create
+    @chat = current_user.owned_chats.build(chat_params)
+
+    respond_to do |format|
+      if @chat.save
+        current_user.join_in @chat
+        format.html { redirect_to @chat, notice: 'Todo was successfully created.' }
+        format.json { render json: @chat, status: :created, location: @chat }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @chat.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def messages
     @messages = []
     @chat.messages.each do |m|

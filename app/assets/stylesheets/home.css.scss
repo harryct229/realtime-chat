@@ -183,8 +183,36 @@
   }
 
   .add_room {
-    width: 12px;
-    float: right;
-    margin-right: 10px;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    padding: 6px 10px;
   }
+
+  #name-chat-input {
+    position: absolute;
+    z-index: 9;
+    width: 120px;
+    height: 28px;
+    top: 15px;
+    right: -120px;
+    border-radius: 5px;
+    line-height: 30px;
+    outline: none;
+    font-size: 15px;
+    border: 2px solid lightblue;
+    text-indent: 10px;
+    opacity: 0;
+
+    -moz-transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+  .movein {
+    right: 50px !important;
+    opacity: 1 !important;
+  }
+
 }

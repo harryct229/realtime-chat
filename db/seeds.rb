@@ -19,7 +19,7 @@ end
 make_users
 
 def make_chats
-  10.times do |n|
+  3.times do |n|
     name = "Chat Room #{n+1}"
     u = Chat.create(
      name:    name,

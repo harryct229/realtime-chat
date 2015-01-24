@@ -2,8 +2,8 @@ RealtimeChat::Application.routes.draw do
   root to: "home#index"
 
   devise_for :users
+  resources :chats
 
-  get '/chats/:id' => 'chats#show'
   get '/chat/:id' => 'chats#chat'
 
   scope :api do

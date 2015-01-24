@@ -4,12 +4,12 @@ App.directive 'sockchat', ->
     scope.$watch 'selectedScreenchat', (screenchat) ->
       if screenchat
         if window.socket
-          console.log("Close Socket")
+          console.log("Close Socket!")
           window.socket.close()
           $(".ajax_line").remove()
 
 
-        console.log("Open Socket")
+        console.log("Open Socket!")
         socket = new WebSocket("ws://" + window.location.host + "/chat/" + screenchat.id)
         window.socket = socket
 
@@ -37,3 +37,9 @@ App.directive "formchat", ->
       if $.trim( $input.val() ) != ''
         window.socket.send JSON.stringify(message: $input.val())
       $input.val null
+
+# Add more room
+App.directive "addroom", ->
+  (scope, element, attrs) ->
+    element.bind "click", ->
+      $("form#new_room input").toggleClass("movein")
