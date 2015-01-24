@@ -1,8 +1,8 @@
 Realtime-chat
 ======
-Using Websocket: https://github.com/ngauthier/tubesock
-Running Server:  Puma
-Using front-end Framwork: AngularJs (test)
+* Using Websocket: https://github.com/ngauthier/tubesock
+* Running Server:  Puma
+* Using front-end Framwork: AngularJs (test)
 
 ## Make Database
 
