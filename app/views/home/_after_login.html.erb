@@ -1,1 +1,46 @@
-<h2>After</h2>
+<div class="main_background" id="front_page">
+  <div class="header">
+    <ul class="logo">SockChat</ul>
+    <ul class="navigation">
+      <li id="logout"><%=link_to "Log Out", destroy_user_session_path, method: :delete, confirm: "You sure?" %></li>
+    </ul>
+  </div>
+  <div class="main">
+    <div ng-controller="ScreenchatsCtrl">
+      <div id="room-selection">
+        <span>Room</span>
+        <div class="btn add_room">+</div>
+      </div>
+      <div id="screenchat-list-container">
+        <ul>
+          <li ng-repeat="screenchat in screenchats" ng-click="showScreenchat(screenchat)">
+            <h3 ng-class="{active: $index == selectedRow}">{{screenchat.name}}</h3>
+          </li>
+        </ul>
+      </div>
+
+      <div id="screenchat-view-container" ng-show="selectedScreenchat">
+        <h2>{{selectedScreenchat.name}}</h2>
+        <div sock-chat=""></div>
+        <pre id="output"></pre>
+        <form class="chat" id="">
+          <input placeholder="hello world" autofocus>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $("body").on("submit", "form.chat", function(event) {
+    var $input;
+    event.preventDefault();
+    $input = $(this).find("input");
+    // console.log($input.val());
+    window.socket.send(JSON.stringify({
+      message: $input.val()
+    }));
+    $input.val(null);
+  });
+</script>

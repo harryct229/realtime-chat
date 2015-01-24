@@ -18,6 +18,7 @@ $alt_font: "Trebuchet MS", Arial, Helvetica, sans-serif;
   letter-spacing: -1px;
   padding: 5px 10px;
   border: 0;
+  cursor: pointer;
 
   &:hover {
     background: $orange;

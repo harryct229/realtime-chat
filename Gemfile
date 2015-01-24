@@ -35,6 +35,7 @@ gem 'tubesock'
 gem 'redis'
 gem 'pry-rails'
 gem 'pry'
+gem 'angularjs-rails'
 
 gem 'json'
 
