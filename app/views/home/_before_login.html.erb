@@ -1,1 +1,21 @@
-<h2>Before</h2>
+<div class="main_background" id="front_page">
+  <div class="header">
+    <ul class="logo">SockChat</ul>
+    <ul class="navigation">
+      <li id="login"><%=link_to "LogIn", new_user_session_path %></li>
+      <li id="signup"><%=link_to "Sign Up", root_path %></li>
+    </ul>
+  </div>
+  <div class="main">
+    <div class="main-panel">
+      <h2>Sign up</h2>
+      <%= form_for("user", :url => user_registration_path) do |f| %>
+      <%= f.text_field :email, placeholder: "Email" %></br>
+      <%= f.password_field :password, placeholder: "Password" %></br>
+      <%= f.password_field :password_confirmation, placeholder: "Re-Enter Password" %></br>
+
+      <%= f.submit 'Sign up', class: "btn submit_button" %>
+      <% end %>
+    </div>
+  </div>
+</div>

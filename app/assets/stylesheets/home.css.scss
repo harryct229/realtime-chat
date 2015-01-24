@@ -1,3 +1,103 @@
-// Place all the styles related to the Home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'settings';
+
+.main_background {
+  min-height: 100%;
+  height: auto !important;
+  margin: 0 auto;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+
+  .header {
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    font-family: Helvetica, Arial, Sans-serif;
+    position: absolute;
+    height: 55px;
+    width: 100%;
+    background: url(header-background.png) repeat-x bottom;
+    text-transform: uppercase;
+    min-width: 1000px;
+
+    ul.logo {
+      position: absolute;
+      left: 20px;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 10px;
+      color: white;
+    }
+
+    ul.navigation {
+      position: absolute;
+      right: 30px;
+      top: -2px;
+
+      li {
+        float: left;
+        display: inline-block;
+        list-style-type: none;
+        color: white;
+        margin-right: 10px;
+        padding: 5px;
+        font-weight: bold;
+        border-radius: 5px;
+        width: 70px;
+        text-align: center;
+
+        a {
+          text-decoration: none;
+          color: white;
+          &:hover {
+            background-color: inherit;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      #login {
+        // background-color: rgb(207, 90, 53);
+      }
+
+      #signup {
+        background-color: rgb(40, 155, 11);
+      }
+    }
+  }
+
+  .main {
+    margin-top: 50px;
+    background: url(background-front-feature-wide.png) repeat;
+    min-height: 625px;
+
+    .main-panel {
+      width: 300px;
+      padding: 25px;
+      margin: 0 auto;
+      position: relative;
+      top: 75px;
+      text-align: center;
+      background: white;
+      border-radius: 10px;
+      border: 1px solid lightblue;
+      box-shadow: 0px 0px 10px 5px lightblue;
+
+      h2 {
+        margin: 0 0 20px 0;
+      }
+
+      input {
+        width: 70%;
+        border-radius: 5px;
+        line-height: 30px;
+        outline: none;
+        font-size: 15px;
+        border: 1px solid lightgray;
+        text-indent: 10px;
+      }
+
+      .submit_button {
+        margin-top: 10px;
+      }
+    }
+  }
+}

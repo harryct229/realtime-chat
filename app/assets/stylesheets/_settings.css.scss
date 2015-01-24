@@ -1,0 +1,25 @@
+$green: #9bba1f;
+$orange: #ffa200;
+$red: #ca3535;
+$blue: #15c1e5;
+
+$border_color: #ddd;
+
+$base_font: Arial, Helvetica, sans-serif;
+$alt_font: "Trebuchet MS", Arial, Helvetica, sans-serif;
+
+.btn {
+  background: $blue;
+  color: white;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: $alt_font;
+  letter-spacing: -1px;
+  padding: 5px 10px;
+  border: 0;
+
+  &:hover {
+    background: $orange;
+  }
+}
