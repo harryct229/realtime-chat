@@ -14,14 +14,13 @@
       <div id="screenchat-list-container">
         <ul>
           <li ng-repeat="screenchat in screenchats" ng-click="showScreenchat(screenchat)">
-            <h3 ng-class="{active: $index == selectedRow}">{{screenchat.name}}</h3>
+            <h3 ng-class="{active: $index == selectedRow}" clickchat="active">{{screenchat.name}}</
           </li>
         </ul>
       </div>
 
       <div id="screenchat-view-container" ng-show="selectedScreenchat">
         <h2>{{selectedScreenchat.name}}</h2>
-        <div sock-chat=""></div>
         <div id="output">
           <ul>
             <li ng-repeat="chatmessage in chatmessages">
@@ -50,9 +49,4 @@
     }));
     $input.val(null)
   });
-
-  $("#screenchat-list-container").on("click", "li", function() {
-    $("#screenchat-list-container li h3").removeClass('active')
-    $(this).find("h3").attr("class", "active")
-  })
 </script>
